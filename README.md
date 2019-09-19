@@ -1,60 +1,33 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
-    <br>
-</p>
+    <h3>Тестовое задание «Микро ЛК #743k»</h3>
+</p> 
+Данное ТЗ умышленно написано тезисно и специально вас не ограничиваю какими то технологиями, обязательными фрэймворком и тд, тк понимаю что все работали с разными и чтобы условия были примерно равными.  
+     
+Нужно сделать проект в котором есть:  
+* Регистрация, авторизация, разграничение прав на администратора и пользователя
+ 
+* Регистрация пользователя - Поля - почта, телефон, имя, пароль Авторизация происходит по почте и паролю 
+     
+* Регистрации администратора нет, его создаем вручную 
+     
+     
+В личном кабинете пользователь может  Редактировать информацию о себе (телефон, пароль, имя) 
+     
+Просмотреть график «времени посадки по дням» 
+     
+Вот пример его реализации 
+     
+![Время посадки](storage/2019-09-20_0212.png)
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
-
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
-
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
-
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
-
-DIRECTORY STRUCTURE
--------------------
-
-```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-```
+В таблице ​`session_action` ​  содержится информация нужная нам, посадкой считаются те записи у которых поле `​action_type_raw​` равно «seat» Поле `action_data_raw` - кол-во секунд на это действие 
+ 
+На графике 2 шкалы «время» и «дни» Каждая точка это среднее значение сколько времени ушло на посадку в заданный день 
+  
+CRUD - записей времен посадки, так же должны присутствовать «id салона» и «id оператора» (они есть в таблице ​`sessions`​) при просмотре записи и когда смотрим все записи на странице «списком» 
+ 
+Итого получается 3 блока/страниц (профиль/график/записи посадки) + дополнительные страницы если нужны 
+ 
+**Администратор может**  
+Управлять пользователями, для этого делаем - CRUD - пользователи.
+ 
+*Главная страница​* - это любой шаблон лэндинга, с которого есть ссылки на авторизацию и регистрацию.
